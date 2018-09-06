@@ -13,12 +13,12 @@ spring:
     stream:
       bindings:
         outputChannel:
-          destination: produce_auditmessage
+          destination: produce_topic
           content-type: application/json
         InputChannel:
-          destination: occupancy_paidtransaction
+          destination: input_topic
           content-type: application/json   
-          group: occupancy_transaction  
+         
         
       kafka:
         binder:
