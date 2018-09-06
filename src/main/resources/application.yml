@@ -1,0 +1,26 @@
+server:
+  port: 7777
+spring:
+  jackson:
+    serialization:
+      write_dates_as_timestamps: false
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/student
+    username: root
+    password: root
+  cloud:
+    stream:
+      bindings:
+        outputChannel:
+          destination: produce_auditmessage
+          content-type: application/json
+        InputChannel:
+          destination: occupancy_paidtransaction
+          content-type: application/json   
+          group: occupancy_transaction  
+        
+      kafka:
+        binder:
+          brokers: localhost:9092
+          zkNodes: localhost:2181
